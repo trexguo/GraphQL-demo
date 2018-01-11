@@ -1,20 +1,20 @@
 import {
   graphql,
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
   GraphQLID,
+  GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
-  isOutputType,
-  GraphQLInt
-} from 'graphql';
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
+  isOutputType
+} from 'graphql'
 
 import mongoose from 'mongoose'
 
-import {InfoType} from './info'
-const Student = mongoose.model('Student')
+import { InfoType } from './info'
 
+const Student = mongoose.model('Student')
 
 let StudentType = new GraphQLObjectType({
   name: 'Student',
@@ -37,11 +37,10 @@ let StudentType = new GraphQLObjectType({
   }
 })
 
-
 export const student = {
   type: new GraphQLList(StudentType),
   args: {},
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Student.find({}).populate({
       path: 'info',
       select: 'hobby height weight'

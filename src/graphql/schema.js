@@ -1,11 +1,8 @@
-import {
-  GraphQLSchema,
-  GraphQLObjectType
-} from 'graphql';
+import { GraphQLObjectType, GraphQLSchema } from 'graphql'
 
-import {info, infos} from './info'
-import {course} from './course'
-import {student} from './student'
+import { info, infos } from './info'
+import { course } from './course'
+import { student } from './student'
 
 export default new GraphQLSchema({
   query: new GraphQLObjectType({

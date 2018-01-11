@@ -4,7 +4,7 @@ const Student = mongoose.model('Student')
 
 export const saveStudent = async (ctx, next) => {
   const opts = ctx.request.body
-  
+
   const student = new Student(opts)
   const saveStudent = await student.save()
 
@@ -34,7 +34,6 @@ export const fetchStudent = async (ctx, next) => {
     }
   }
 }
-
 
 export const fetchStudentDetail = async (ctx, next) => {
   const students = await Student.find({}).populate({

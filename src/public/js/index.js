@@ -1,22 +1,22 @@
 window.onload = function () {
 
-  $('#btn2').click(function() {
+  $('#btn2').click(function () {
     $.ajax({
       url: '/student',
       data: {},
-      success:function (res){
+      success: function (res) {
         if (res.success) {
-          renderStudent (res.data)
+          renderStudent(res.data)
         }
       }
     })
   })
 
-  $('#btn1').click(function() {
+  $('#btn1').click(function () {
     $.ajax({
       url: '/course',
       data: {},
-      success:function (res){
+      success: function (res) {
         if (res.success) {
           renderCourse(res.data)
         }
@@ -24,23 +24,23 @@ window.onload = function () {
     })
   })
 
-  function renderStudent (data) {
+  function renderStudent(data) {
     var str = ''
-    data.forEach(function(item) {
-      str += '<li>姓名：'+item.name+'，性别：'+item.sex+'，年龄：'+item.age+'</li>'
+    data.forEach(function (item) {
+      str += '<li>姓名：' + item.name + '，性别：' + item.sex + '，年龄：' + item.age + '</li>'
     })
     $('#studentList').html(str)
   }
 
-  function renderCourse (data) {
+  function renderCourse(data) {
     var str = ''
-    data.forEach(function(item) {
-      str += '<li>课程：'+item.title+'，简介：'+item.desc+'</li>'
+    data.forEach(function (item) {
+      str += '<li>课程：' + item.title + '，简介：' + item.desc + '</li>'
     })
     $('#courseList').html(str)
   }
 
-  $('#btn3').click(function() {
+  $('#btn3').click(function () {
     $.ajax({
       url: '/graphql',
       data: {
@@ -57,9 +57,9 @@ window.onload = function () {
           }
         }`
       },
-      success:function (res){
-        renderStudent (res.data.student)
-        renderCourse (res.data.course)
+      success: function (res) {
+        renderStudent(res.data.student)
+        renderCourse(res.data.course)
       }
     })
   })

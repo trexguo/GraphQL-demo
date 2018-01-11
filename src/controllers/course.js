@@ -4,7 +4,7 @@ const Course = mongoose.model('Course')
 
 export const saveCourse = async (ctx, next) => {
   const opts = ctx.request.body
-  
+
   const course = new Course(opts)
   const saveCourse = await course.save()
 

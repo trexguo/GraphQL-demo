@@ -1,18 +1,17 @@
-
 import {
   graphql,
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
   GraphQLID,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
   isOutputType
-} from 'graphql';
+} from 'graphql'
 
 import mongoose from 'mongoose'
-const Info = mongoose.model('Info')
 
+const Info = mongoose.model('Info')
 
 // const parameterType = new GraphQLObjectType({
 //   name: 'parameters',
@@ -25,7 +24,6 @@ const Info = mongoose.model('Info')
 //     }
 //   }
 // })
-
 
 const objType = new GraphQLObjectType({
   name: 'mete',
@@ -63,15 +61,13 @@ export let InfoType = new GraphQLObjectType({
   }
 })
 
-
 export const infos = {
   type: new GraphQLList(InfoType),
   args: {},
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Info.find({}).exec()
   }
 }
-
 
 export const info = {
   type: InfoType,
@@ -81,7 +77,7 @@ export const info = {
       type: new GraphQLNonNull(GraphQLID)
     }
   },
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Info.findOne({
       _id: params.id
     }).exec()
